@@ -1,6 +1,8 @@
 #include "intro.h"
 #include "game.h"
 #include <iostream>
+#include <algorithm>
+#include <vector>
 
 // displayBoard displays the board in the terminal
 void displayBoard(char *row)
@@ -24,10 +26,27 @@ void displayBoard(char *row)
 int selectSquare()
 {
     int square{};
-    std::cout << " Select square (1-9): ";
+    std::cout << " Select a square (1-9): ";
     std::cin >> square;
 
     return square;
+}
+
+// validateSelection validates square is available
+int validateSelection(std::vector<int>& selected)
+{
+    int marker{ selectSquare() };
+    if (std::find(selected.begin(), selected.end(), marker) != selected.end())
+    {
+        std::cout << " Square has already been selected. Please make another selection." << '\n';
+        marker = validateSelection(selected);
+    }
+    else
+    {
+        selected.push_back(marker);
+    }
+
+    return marker;
 }
 
 // calculateWinner returns true if it finds three characters in a row
@@ -42,6 +61,7 @@ bool calculateWinner(char *row, char m)
         (row[2] == m && row[5] == m && row[8] == m) ||
         (row[2] == m && row[4] == m && row[6] == m)) 
         return true;
+
     return false;
 }
 
@@ -52,15 +72,16 @@ void runGame()
     char player2{'O'};
     
     char row[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
-    int marker{0};
-    
     displayBoard(row);
+
+    int marker{0};
     bool running{ true };
+    std::vector<int> selected;
 
     while (running)
     {
         std::cout << player1Text << '\n';
-        marker = { selectSquare() };
+        marker = validateSelection(selected);
         row[marker-1] = player1;
 
         clearScreen();
@@ -73,7 +94,7 @@ void runGame()
         }
         
         std::cout << player2Text << '\n';
-        marker = { selectSquare() };
+        marker = validateSelection(selected);
         row[marker-1] = player2;
 
         clearScreen();
