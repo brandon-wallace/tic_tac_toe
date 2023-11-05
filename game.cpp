@@ -1,7 +1,8 @@
 #include "intro.h"
 #include "game.h"
-#include <iostream>
 #include <algorithm>
+#include <iostream>
+#include <limits>
 #include <vector>
 
 // displayBoard displays the board in the terminal
@@ -28,6 +29,18 @@ int selectSquare()
     int square{};
     std::cout << " Select a square (1-9): ";
     std::cin >> square;
+    if (std::cin.fail())
+    {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cerr << " Invalid input. Please try again: " << '\n';
+        selectSquare();
+    }
+    if (square < 1 || square > 9)
+    {
+        std::cerr << " Number not within 1-9 range. Please try again: " << '\n';
+        selectSquare();
+    }
 
     return square;
 }
