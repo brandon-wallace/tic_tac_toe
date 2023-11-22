@@ -45,14 +45,14 @@ int selectSquare()
     return square;
 }
 
-// validateSelection validates square is available
-int validateSelection(std::vector<int>& selected)
+// validateSelectedSquare validates square is available
+int validateSelectedSquare(std::vector<int>& selected)
 {
     int marker{ selectSquare() };
     if (std::find(selected.begin(), selected.end(), marker) != selected.end())
     {
         std::cout << " Square has already been selected. Please make another selection." << '\n';
-        marker = validateSelection(selected);
+        marker = validateSelectedSquare(selected);
     }
     else
     {
@@ -110,7 +110,7 @@ void runGame()
     while (running)
     {
         std::cout << player1Text << '\n';
-        marker = validateSelection(selected);
+        marker = validateSelectedSquare(selected);
         row[marker-1] = player1;
 
         clearScreen();
@@ -132,7 +132,7 @@ void runGame()
         }
         
         std::cout << player2Text << '\n';
-        marker = validateSelection(selected);
+        marker = validateSelectedSquare(selected);
         row[marker-1] = player2;
 
         clearScreen();
