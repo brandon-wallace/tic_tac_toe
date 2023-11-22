@@ -8,19 +8,19 @@
 // displayBoard displays the board in the terminal
 void displayBoard(char *row)
 {
-    std::cout << '\n';
-    std::cout << "        |       |      " << '\n';
-    std::cout << "     " << row[0] << "  |   " << row[1] << "   |   " << row[2] << "   " << '\n';
-    std::cout << "        |       |      " << '\n';
-    std::cout << "  ---------------------" << '\n';
-    std::cout << "        |       |      " << '\n';
-    std::cout << "     " << row[3] << "  |   " << row[4] << "   |   " << row[5] << "   " << '\n';
-    std::cout << "        |       |      " << '\n';
-    std::cout << "  ---------------------" << '\n';
-    std::cout << "        |       |      " << '\n';
-    std::cout << "     " << row[6] << "  |   " << row[7] << "   |   " << row[8] << "   " << '\n';
-    std::cout << "        |       |      " << '\n';
-    std::cout << '\n';
+    std::cout << '\n'
+     << "        |       |      " << '\n'
+     << "     " << row[0] << "  |   " << row[1] << "   |   " << row[2] << "   " << '\n'
+     << "        |       |      " << '\n'
+     << "  ---------------------" << '\n'
+     << "        |       |      " << '\n'
+     << "     " << row[3] << "  |   " << row[4] << "   |   " << row[5] << "   " << '\n'
+     << "        |       |      " << '\n'
+     << "  ---------------------" << '\n'
+     << "        |       |      " << '\n'
+     << "     " << row[6] << "  |   " << row[7] << "   |   " << row[8] << "   " << '\n'
+     << "        |       |      " << '\n'
+     << '\n';
 }
 
 // selectSquare prompts the player for a number
