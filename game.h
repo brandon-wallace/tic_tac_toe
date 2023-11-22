@@ -2,11 +2,14 @@
 #define UTILITY_H
 
 #include <string>
+#include <vector>
 
 void displayBoard(char, int, char);
 void runGame();
 int selectSquare();
+int validateSelectedSquare(std::vector<int>);
 bool calculateWinner(char*, char);
+void playAgain();
 
 #endif
 

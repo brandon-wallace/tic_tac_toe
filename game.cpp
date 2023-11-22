@@ -78,6 +78,22 @@ bool calculateWinner(char *row, char m)
     return false;
 }
 
+// playAgain prompts the player to play the game again
+void playAgain()
+{
+    char answer;
+    std::cout << " Would you like to play again (Y or N) ?: ";
+    std::cin >> answer;
+
+    if (toupper(answer) == 'Y')
+    {
+        clearScreen();
+        runGame();
+    }
+
+    return;
+}
+
 // runGame runs the game
 void runGame()
 {
@@ -103,6 +119,7 @@ void runGame()
         {
             std::cout << player1Win << '\n';
             running = false;
+            playAgain();
             return;
         }
 
@@ -110,6 +127,7 @@ void runGame()
         {
             running = false;
             std::cout << " Tie!" << '\n';
+            playAgain();
             return;
         }
         
@@ -123,6 +141,7 @@ void runGame()
         {
             std::cout << player2Win << '\n';
             running = false;
+            playAgain();
             return;
         }
     }
