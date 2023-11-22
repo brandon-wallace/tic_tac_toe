@@ -105,6 +105,13 @@ void runGame()
             running = false;
             return;
         }
+
+        if (selected.size() == 9)
+        {
+            running = false;
+            std::cout << " Tie!" << '\n';
+            return;
+        }
         
         std::cout << player2Text << '\n';
         marker = validateSelection(selected);
